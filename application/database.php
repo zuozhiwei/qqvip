@@ -13,15 +13,15 @@ return [
     // 数据库类型
     'type'            => 'mysql',
     // 服务器地址
-    'hostname'        => '127.0.0.1',
+    'hostname'        => '182.254.132.179',
     // 数据库名
-    'database'        => '',
+    'database'        => 'qqvip',
     // 用户名
-    'username'        => 'root',
+    'username'        => 'dbuser',
     // 密码
-    'password'        => '',
+    'password'        => '123456',
     // 端口
-    'hostport'        => '',
+    'hostport'        => '3306',
     // 连接dsn
     'dsn'             => '',
     // 数据库连接参数
