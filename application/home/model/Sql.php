@@ -10,4 +10,15 @@ class Sql extends Model
         return db('business') -> select();
     }
 
+    public function addBusiness($businessID,$businessName,$businessDescription,$businessPrice)
+    {
+        $insertData = [
+            'id' => $businessID,
+            'name' => $businessName,
+            'description' => $businessDescription,
+            'price' => $businessPrice
+        ];
+        db('business') -> insert($insertData);
+    }
+
 }
