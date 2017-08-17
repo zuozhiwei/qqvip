@@ -32,6 +32,13 @@ class Index
         return json($data) ;
     }
 
+    /**
+     * 添加业务项
+     * [get]或[post]参数：
+     *                  businessName 业务名称
+     *                  businessDescription  业务描述
+     *                  businessPrice    业务价格
+     */
     public function addBusiness()
     {
         if (is_array($_GET) && count($_GET) > 0) {
@@ -54,5 +61,30 @@ class Index
             'info' => 'success',
             'data' => []
         ];
+        return json($data);
+    }
+
+    /**
+     * 删除业务项
+     * @return json  info=‘success’
+     */
+    public function delBusiness()
+    {
+        if (is_array($_GET) && count($_GET) > 0) {
+            $businessID = $_GET['businessID'];
+        }
+
+        if (is_array($_POST) && count($_POST) > 0) {
+            $businessID = $_POST['businessID'];
+        }
+
+        $sql = new Sql();
+        $sql -> delBusiness($businessID);
+
+        $data = [
+            'info' => 'success',
+            'data' => []
+        ];
+        return json($data);
     }
 }
