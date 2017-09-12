@@ -3,6 +3,9 @@ namespace app\home\controller;
 use app\home\model\Sql;
 use app\tools\GetSystemID;
 
+header('Access-Control-Allow-Origin:*');
+header('Content-Type:text/html; charset=utf-8');
+
 /**
  * index类
  */
