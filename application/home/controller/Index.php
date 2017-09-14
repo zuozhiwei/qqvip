@@ -69,7 +69,8 @@ class Index
 
     /**
      * 删除业务项
-     * @return json  info=‘success’
+     * @return json info=‘success’ 删除成功
+     *                   ='noExist' id不存在
      */
     public function delBusiness()
     {
@@ -82,8 +83,17 @@ class Index
         }
 
         $sql = new Sql();
-        $sql -> delBusiness($businessID);
 
+        $businessIDExist = $sql -> checkBusinessID($businessID);
+        if (empty($businessIDExist)){
+            $data = [
+                'info' => 'noExist',
+                'data' => []
+            ];
+            return json($data);
+        }
+
+        $sql -> delBusiness($businessID);
         $data = [
             'info' => 'success',
             'data' => []

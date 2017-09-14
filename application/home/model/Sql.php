@@ -7,7 +7,7 @@ class Sql extends Model
 {
     /**
      * 获取业务列表
-     * @return arry 业务列表
+     * @return  业务列表
      */
     public function getBusinessList()
     {
@@ -40,6 +40,12 @@ class Sql extends Model
     public function delBusiness($businessID)
     {
         db('business') -> where('id',$businessID) -> delete();
+    }
+
+    public function checkBusinessID($businessID)
+    {
+        return db('business') -> where('id',$businessID) -> find();
+
     }
 
 }
