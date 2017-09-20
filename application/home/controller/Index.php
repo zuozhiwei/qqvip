@@ -2,6 +2,7 @@
 namespace app\home\controller;
 use app\home\model\Sql;
 use app\tools\GetSystemID;
+use app\tools\APIJson;
 
 header('Access-Control-Allow-Origin:*');
 header('Content-Type:text/html; charset=utf-8');
@@ -28,11 +29,8 @@ class Index
     public function getBusinessList(){
         $sql = new Sql();
         $businessList = $sql -> getBusinessList();
-        $data = [
-            'info' => 'success',
-            'data' => $businessList
-        ];
-        return json($data) ;
+        $apiJson = new APIJson();
+        return $apiJson ->generateAPIJson("200","success",$businessList,"");
     }
 
     /**
@@ -64,6 +62,8 @@ class Index
             'info' => 'success',
             'data' => []
         ];
+        return $apiJson ->generateAPIJson("200","success","","");
+
         return json($data);
     }
 
@@ -84,6 +84,7 @@ class Index
 
         $sql = new Sql();
 
+        //检查业务id是否存在
         $businessIDExist = $sql -> checkBusinessID($businessID);
         if (empty($businessIDExist)){
             $data = [
